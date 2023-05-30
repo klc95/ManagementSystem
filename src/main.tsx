@@ -8,7 +8,6 @@ import '@/assets/styles/global.less';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
-// import store from '@/store';
 import store, { persistor } from '@/store';
 import { Provider } from 'react-redux';
 

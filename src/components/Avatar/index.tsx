@@ -17,7 +17,6 @@ const Avatar: React.FC = () => {
   return (
     <Popconfirm
       title='您确定退出登陆吗?'
-      // description='您确定退出登陆吗?'  
       onConfirm={loginOut}
       cancelText='No'
     >

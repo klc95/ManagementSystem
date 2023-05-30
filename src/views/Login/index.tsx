@@ -62,7 +62,7 @@ const view = () => {
     let captchaAPIRes =  await CaptchaAPI()
     console.log(captchaAPIRes);
     if (captchaAPIRes.code === 200) {
-      setCaptchaImg("data:image/gif;base64," + captchaAPIRes.img);
+      // setCaptchaImg("data:image/gif;base64," + captchaAPIRes.img);
       // localStorage.setItem("uuid", captchaAPIRes.uuid);
       localStorage.setItem("uuid", '666666');
     }
