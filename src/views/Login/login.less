@@ -1,0 +1,31 @@
+.loginbox {
+  // 控制表单
+  .ant-input, .ant-input-password {
+    background-color: rgba(255, 255, 255, 0);
+    border-color: #1890ff ;
+    color: #FFF;
+    height: 38px;
+  }
+  .ant-input-password .ant-input {
+    height: 28px;
+  }
+  .ant-input::-webkit-input-placeholder {
+    color: rgba(24, 144, 255, 0.6);
+  }
+  // 控制眼睛图标
+  .ant-input-password-icon.anticon, .ant-input-password-icon.anticon:hover {
+    color: #1890ff;
+  }
+  // 控制验证码盒子
+  .captchaBox {
+    display: flex;
+    .captchaImg {
+      margin-left: 20px;
+      cursor: pointer;
+    }
+  }
+  // 登录按钮高度
+  .loginButton {
+    height: 38px;
+  }
+}
