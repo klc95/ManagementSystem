@@ -7,4 +7,4 @@ react18 + antd5 + react-router + redux + react-redux + react-thunk + axios
 1. 登录页面
 2. 后台主页
 
-测试账号/密码: qdtest1/123456
+测试账号/密码: admin/1  /  user/1
