@@ -39,7 +39,7 @@ export default {
           },
           {
             title: '栏目4',
-            path: 'page4',
+            path: '/page4',
             icon: 'TeamOutlined',
             children: [
               {

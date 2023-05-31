@@ -6,9 +6,10 @@ import { getHomeDataAPI} from '@/request/api.ts'
 
 export default function Page1() {
 
-  let { num, sarr} = useSelector((state: RootState) => ({
+  let { num, sarr, menuList} = useSelector((state: RootState) => ({
     num: state.handleNum.num,
     sarr: state.handleArr.sarr,
+    menuList: state.handleMenu.menuList
   }))
   
   let dispatch = useDispatch()
@@ -33,7 +34,6 @@ export default function Page1() {
     console.log(homeDataAPIRes);
   };
 
-
   return (
     <div>
       Page1
@@ -46,6 +46,9 @@ export default function Page1() {
       <br />
       <br />
       <div>{sarr}</div>
+      <br />
+      <div>{menuList}</div>
+      <br />
       <br />
       <Button type="primary" onClick={changeNewEle}>添加新元素</Button>
       <br />

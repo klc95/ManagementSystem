@@ -4,6 +4,8 @@ import { Menu, Spin } from 'antd';
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getMenuList } from '@/request/api.ts';
+import { useDispatch } from "react-redux"
+import { handleRouter} from '@/utils/util'
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -25,6 +27,8 @@ const Comp: React.FC = () => {
   const navigateTo = useNavigate();
 
   const currentRoute = useLocation();
+
+  let dispatch = useDispatch()
 
   let firstOpenKey: string = '';
 
@@ -72,8 +76,6 @@ const Comp: React.FC = () => {
   };
 
   const handleOpenChange = (keys: string[]) => {
-    console.log('keys', keys);
-
     setOpenKeys([keys[keys.length - 1]]);
   };
 
@@ -83,14 +85,16 @@ const Comp: React.FC = () => {
       const { data } = await getMenuList();
       if (!data?.length) return;
       setMenuList(deepLoopFloat(data));
+      dispatch({
+        type:  'setMenuList',
+        val: handleRouter((data))
+      })
     } finally {
       setLoading(false);
     }
   };
 
   const menuClick = (e: { key: string }) => {
-    console.log('e.key', e.key);
-
     navigateTo(e.key);
   };
 
@@ -99,7 +103,7 @@ const Comp: React.FC = () => {
   }, []);
 
   return (
-    <Spin spinning={loading} tip='Loading...'>
+    // <Spin spinning={loading} tip='Loading...'>
       <Menu
         theme='dark'
         defaultSelectedKeys={[currentRoute.pathname]}
@@ -109,7 +113,7 @@ const Comp: React.FC = () => {
         openKeys={openKeys}
         onOpenChange={handleOpenChange}
       />
-    </Spin>
+    // </Spin>
   );
 };
 

@@ -1,12 +1,15 @@
 import GetRouters from './router';
-import AuthRouer from './components/AuthRouter';
+import AuthRouter from '@/components/AuthRouter';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <div className='App'>
-      <AuthRouer>
-        <GetRouters/>
-      </AuthRouer>
+      <BrowserRouter>
+        <AuthRouter>
+          <GetRouters />
+        </AuthRouter>
+      </BrowserRouter>
     </div>
   );
 }

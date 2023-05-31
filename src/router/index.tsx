@@ -22,6 +22,8 @@ const withLoadingComponent = (comp: JSX.Element) => (
   </React.Suspense>
 );
 
+
+
 const routesList = [
   {
     path: "/",
@@ -37,7 +39,7 @@ const routesList = [
         path: "/page1",
         element: withLoadingComponent(<Page1 />),
         meta: {
-          requireAuth: false,
+          requireAuth: true,
           key: 'page1'
         }
       },
@@ -55,7 +57,7 @@ const routesList = [
           withLoadingComponent(<Page301 />)
         ),
         meta: {
-          requireAuth: false,
+          requireAuth: true,
           key: 'page301'
         }
       },
@@ -113,13 +115,11 @@ const routesList = [
   },
   {
     path: "/login",
-    element: <Login />
+    element: withLoadingComponent(<Login />)
   },
-  // 嵌套路由结束
-  // 访问其余路径时直接跳到首页
   {
     path: "*",
-    element: <Error />
+    element: withLoadingComponent(<Error />)
   }
 ];
 

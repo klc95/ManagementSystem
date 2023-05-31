@@ -10,7 +10,7 @@ import handleMenu from "./MenuStatus/reducer.ts";
 const persistConfig = {  
   key: 'root', // 储存的标识名
   storage, // 储存方式
-  whitelist: ['handleNum'], //白名单 模块参与缓存
+  whitelist: ['handleNum', 'handleMenu'], //白名单 模块参与缓存
 }
 
 const reducers = combineReducers({

@@ -1,6 +1,6 @@
 import handleMenu from './index'
 
-let reducer = (state = { ...handleMenu.state }, action: { type: string, val: string}) => {
+let reducer = (state = { ...handleMenu.state }, action: { type: string, val: MenuOptions[]}) => {
   let newState = JSON.parse(JSON.stringify(state));
   
   for(let key in handleMenu.actionNames) {

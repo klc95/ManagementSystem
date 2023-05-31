@@ -4,9 +4,9 @@ let initState = {
   num: 30,
 };
 
-let st = localStorage.getItem('root')
-if (st) {
-  const dd = JSON.parse(st);
+let persistStatus = localStorage.getItem('root')
+if (persistStatus) {
+  const dd = JSON.parse(persistStatus);
   initState = dd.handleNum
 }
 

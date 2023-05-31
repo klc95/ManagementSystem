@@ -22,7 +22,7 @@ const view = () => {
   const [usernameVal, setUsernameVal] = useState("")
   const [passwordVal, setpasswordVal] = useState("")
   const [captchaVal, setcaptchaVal] = useState("")
-  const [captchaImg, setCaptchaImg] = useState("");
+  // const [captchaImg, setCaptchaImg] = useState("");
 
   const usernameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsernameVal(e.target.value)
@@ -34,7 +34,6 @@ const view = () => {
     setcaptchaVal(e.target.value)
   }
   const goToLogin = async () => {
-    console.log( typeof usernameVal);
     if(!usernameVal.trim() || !passwordVal.trim() || !captchaVal.trim()) {
       message.warning('请输入完整登录信息')
       return
@@ -45,8 +44,7 @@ const view = () => {
       code: captchaVal,
       uuid: localStorage.getItem('uuid') as string
     })
-    console.log('loginAPIRes', loginAPIRes);
-    
+  
     if(loginAPIRes.code === 200) {
       message.success(loginAPIRes.msg);
       localStorage.setItem('lege-react-management-token', loginAPIRes.token)
@@ -60,7 +58,6 @@ const view = () => {
 
   const getCaptchaImg = async () => {
     let captchaAPIRes =  await CaptchaAPI()
-    console.log(captchaAPIRes);
     if (captchaAPIRes.code === 200) {
       // setCaptchaImg("data:image/gif;base64," + captchaAPIRes.img);
       // localStorage.setItem("uuid", captchaAPIRes.uuid);

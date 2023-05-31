@@ -1,30 +1,22 @@
-import { Navigate,useLocation, useNavigate } from 'react-router-dom';
-import { message } from 'antd';
-import { useEffect } from 'react';
+import { useLocation, Navigate } from "react-router-dom";
+import store from "@/store/index";
 
-const LoginAuth = () => {
-  const navigateTo = useNavigate()
-  useEffect(() => {
-    navigateTo('/');
-    message.warning("您已经登录过了！");
-  }, []);
-  return <div></div>;
+const AuthRouter = (props: { children: JSX.Element }) => {
+	const { pathname } = useLocation();
+
+	const token = localStorage.getItem('lege-react-management-token');
+
+	if (!token) return <Navigate to="/login" replace />;
+
+	const dynamicRouter = store.getState().handleMenu;
+  
+	const staticRouter = ['/', '/404'];
+
+	const routerList = dynamicRouter.menuList.concat(staticRouter);
+  
+	if (routerList.indexOf(pathname) == -1) return <Navigate to="/404" />;
+
+	return props.children;
 };
 
-export default function AuthRouer(props: { children: JSX.Element }) {
-  const token = localStorage.getItem('lege-react-management-token');
-  const { pathname } = useLocation()
-  if(pathname === '/login' && !token) {
-    return props.children;                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-  }
-  if(pathname === '/login' && token) {
-    return <LoginAuth />                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-  }
-  if (!token) {
-    message.warning("您还没有登录，请登录后再访问！");
-    return <Navigate to='/login' replace />
-  } else {
-    return props.children
-  }
-}
-
+export default AuthRouter;
